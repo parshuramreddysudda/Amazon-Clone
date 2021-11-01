@@ -19,7 +19,7 @@ export default function CheckoutProduct({ id, title, rating, price, image }) {
 
     const notify = () =>
         toast.error(" Item Deleted from Cart", {
-            position: "top-right",
+            position: "bottom-center",
             autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,

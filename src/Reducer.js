@@ -3,13 +3,7 @@ import { integerPropType } from "@mui/utils";
 export const getBasketTotal = (basket) => basket?.reduce((amount, item) => parseInt(item.price) + amount, 0);
 
 export const initialState = {
-    basket: [{
-        id: 3244,
-        image: "https://m.media-amazon.com/images/I/81vDZyJQ-4L._SL1500_.jpg",
-        price: "36990.00",
-        rating: 4,
-        title: "Samsung Galaxy S20 FE 5G (Cloud Navy"
-    }],
+    basket: [],
     user: null
 };
 
@@ -32,6 +26,16 @@ function reducer(state, action) {
                 console.warn("Can't remove Product id", action.id, " from basket");
             }
             return { ...state, basket: newBasket };
+        case 'SET_USER':
+            return {
+                ...state,
+                user: action.user
+            };
+        case 'RESET_BASKET':
+            return {
+                ...state,
+                basket:action.basket
+            }
         default:
             return state;
     }

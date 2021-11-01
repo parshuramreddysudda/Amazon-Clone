@@ -6,30 +6,45 @@ import './Product.css'
 import 'react-toastify/dist/ReactToastify.css';
 
 function Index({ id, title, rating, price, image }) {
-    const [{ }, dispatch] = useStateValue();
+    const [{ user }, dispatch] = useStateValue();
 
     const addToBasket = () => {
-        notify()
-        dispatch({
-            type: "ADD_TO_BASKET",
-            item: {
-                id,
-                title,
-                image,
-                price,
-                rating
-            },
-        });
+
+        if (user) {
+            notify("Item added to Cart");
+            dispatch({
+                type: "ADD_TO_BASKET",
+                item: {
+                    id,
+                    title,
+                    image,
+                    price,
+                    rating
+                },
+            });
+        }
+        else {
+            toast.warning("Please Login to Continue", {
+                position: "bottom-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                theme: 'colored',
+                draggable: true,
+                pauseOnHover: false,
+                progress: undefined,
+            });
+        }
     };
-    const notify = () =>
-        toast.success(" Item added to Cart", {
+    const notify = (message) =>
+        toast.success(message, {
             position: "bottom-center",
             autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             theme: 'colored',
             draggable: true,
-            pauseOnHover:false,
+            pauseOnHover: false,
             progress: undefined,
         });
     return (

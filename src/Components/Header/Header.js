@@ -4,10 +4,17 @@ import './Header.css';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { useStateValue } from '../../StateProvider';
+import { auth } from '../Login/firebase';
 
 function Header() {
 
-    const [{basket}] = useStateValue();
+    const [{ basket, user }] = useStateValue();
+
+    const login = () => {
+        if (user)
+            auth.signOut()
+    }
+
     return (
         <nav className="header">
             <Link to="/">
@@ -18,10 +25,10 @@ function Header() {
                 <SearchIcon className="header__searchIcon" />
             </div>
             <div className="header__nav">
-                <Link to="/login" className="header___link">
-                    <div className="header__option">
-                        <span className="header__optionLineOne">Hello Ram</span>
-                        <span className="header__optionLineTwo">Sign in</span>
+                <Link to={!user && "/login"} className="header___link">
+                    <div onClick={login} className="header__option">
+                        <span className="header__optionLineOne">Hello <br />{user ? String(user).substring(0, String(user).lastIndexOf('@')) : 'Guest'}</span>
+                        <span className="header__optionLineTwo">{user ? 'Sign Out' : 'Sign in'}</span>
                     </div>
                 </Link>
                 <Link to="/" className="header___link">
