@@ -17,9 +17,7 @@ export default function Index() {
             .then((auth) => {
 
                 notifyLoggedIn("User Logged In Redirecting to Home Page")
-                setInterval(() => {
-                    history.push('/');
-                }, 3000);
+                history.push('/');
             }).catch(e => notifyError(e.message));
     }
     const register = e => {
