@@ -23,16 +23,6 @@ function App() {
         })
       }
       else {
-        toast.warning("User Logged Out.", {
-          position: "bottom-center",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          theme: 'colored',
-          draggable: true,
-          pauseOnHover: false,
-          progress: undefined,
-        })
         dispatch({
           type: "SET_USER",
           user: null

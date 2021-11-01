@@ -5,14 +5,28 @@ import SearchIcon from '@mui/icons-material/Search';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 import { useStateValue } from '../../StateProvider';
 import { auth } from '../Login/firebase';
+import { toast } from 'react-toastify';
+
 
 function Header() {
 
     const [{ basket, user }] = useStateValue();
 
     const login = () => {
-        if (user)
-            auth.signOut()
+        if (user) {
+            auth.signOut();
+            toast.warning("User Logged Out.", {
+                position: "bottom-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                theme: 'colored',
+                draggable: true,
+                pauseOnHover: false,
+                progress: undefined,
+            })
+        }
+
     }
 
     return (
