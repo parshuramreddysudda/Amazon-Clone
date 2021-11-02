@@ -18,4 +18,4 @@ Live link
 
 Open [https://amazon-clone-olive-seven.vercel.app/](https://amazon-clone-olive-seven.vercel.app/) to view it in the browser.
 
-![image](![image](https://user-images.githubusercontent.com/28673434/139847577-9efe7abd-548a-4a67-a819-fc0f225b8a11.png))
+![image](https://user-images.githubusercontent.com/28673434/139847700-75a5c230-61f5-4a28-902c-95a7aa916499.png)
